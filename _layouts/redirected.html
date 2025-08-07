@@ -3,17 +3,24 @@ layout: default
 ---
 
 <div class="page">
-  <div class="container">
-    <h1>Redirecting...</h1>
-    <p>If you are not redirected, <a href="{{ page.redirect_to }}">click here</a>.</p>
+  <div class="container text-center py-5">
+    <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+      <span class="visually-hidden">Redirecting...</span>
+    </div>
+    <h1 class="h4">Redirecting...</h1>
+    <p class="text-muted">
+      If you are not redirected automatically,
+      <a href="{{ page.redirect_to }}">click here</a>.
+    </p>
   </div>
 </div>
 
 <script>
-  // Prefer JS-based redirect for speed and no browser history entry
+  // JS-based redirection (faster and cleaner)
   window.location.replace("{{ page.redirect_to }}");
 </script>
 
-<meta http-equiv="refresh" content="0; url={{ page.redirect_to }}">
+<!-- Meta fallback -->
+<meta http-equiv="refresh" content="3; url={{ page.redirect_to }}">
 <link rel="canonical" href="{{ page.redirect_to }}">
 <meta name="robots" content="noindex">
