@@ -1,6 +1,6 @@
 ---
 layout: 1st Year
-icon: fa-solid fa-circle-1
+icon: fa-solid fa-book-open
 order: 1
 permalink: /firstyear/
 ---
