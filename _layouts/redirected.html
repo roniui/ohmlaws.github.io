@@ -10,8 +10,10 @@ layout: default
 </div>
 
 <script>
-  // JS-based redirect, no browser history entry
-  window.location.replace("{{ page.redirect_to }}");
+  // Ensure this script runs after the DOM is ready
+  window.addEventListener("DOMContentLoaded", function () {
+    window.location.replace("{{ page.redirect_to }}");
+  });
 </script>
 
 <link rel="canonical" href="{{ page.redirect_to }}">
