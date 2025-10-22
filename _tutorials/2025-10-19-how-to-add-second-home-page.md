@@ -16,7 +16,7 @@ If you want to display posts from a separate folder on a **different home page**
 In your `_layouts` folder, create a new layout file for your new collection posts.
 
 **Example:**  
-`_layouts/tutorials.html`
+[_layouts/tutorials.html](https://github.com/ohmlaws/ohmlaws.github.io/blob/main/_layouts/tutorials.html)
 
 Add the following code inside it:
 {% raw %}
@@ -28,7 +28,7 @@ layout: page
 {{ content }}
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
-  {% for post in site.tutorials %}
+  {% for post in site.tutorials reversed %}  
     <article class="card-wrapper card">
       <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
         {% assign card_body_col = '12' %}
@@ -36,7 +36,9 @@ layout: page
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
           {% capture src %}{% include media-url.html src=src subpath=post.media_subpath %}{% endcapture %}
+
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+
           {% assign lqip = null %}
 
           {% if post.image.lqip %}
@@ -46,8 +48,8 @@ layout: page
 
           <div class="col-md-5">
             <div class="preview-img">
-              <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
-            </div>
+  <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+          </div>
           </div>
 
           {% assign card_body_col = '7' %}
@@ -56,12 +58,15 @@ layout: page
         <div class="col-md-{{ card_body_col }}">
           <div class="card-body d-flex flex-column">
             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+
             <div class="card-text content mt-0 mb-3">
-              <p>{% include post-description.html %}</p>
+              <p>{% include post-summary.html %}</p>
             </div>
+
             <div class="post-meta flex-grow-1 d-flex align-items-end">
               <div class="me-auto">
-                <i class="far fa-calendar fa-fw me-1"></i>{{ post.date | date: "%b %-d, %Y" }}
+                <i class="far fa-calendar fa-fw me-1"></i>
+{{ post.date | date: "%b %-d, %Y" }}
               </div>
             </div>
           </div>
