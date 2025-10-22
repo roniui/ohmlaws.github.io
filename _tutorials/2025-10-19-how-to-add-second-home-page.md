@@ -134,9 +134,10 @@ Now open `_config.yml` and scroll to the bottom of the file.
 
 Look for something like:
 ```
- tabs:
-  output: true
-  sort_by: order 
+collections:
+  tabs:
+    output: true
+    sort_by: order 
   ```
 
 `Then add your new collection just after`
@@ -191,6 +192,11 @@ date: 2025-10-19
 Then write your content below it.
 
 ```
+---
+
+> As of now `No new category,tags` supported for new collections folder pages, you can use your previously used category,tags from your `_posts` pages.
+{: .prompt-warning }
+
 ---
 
 ## Step 6: Test Your New Collection
